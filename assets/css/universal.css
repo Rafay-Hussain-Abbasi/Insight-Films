@@ -1,0 +1,69 @@
+ .mainForm{
+    padding: 10%;
+    
+}
+
+.formContainer{
+    padding: 7%;
+    height: 100%;
+    border: 1px solid red;
+    border-radius: 12px;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.imageArea, .formArea{
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+} 
+
+.contactInfo{
+    padding-bottom: 20px;
+}
+
+.contactInfo h1{
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.contactInfo p{
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.locInfo, .mailInfo, .phoneInfo{
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+
+form input{
+    color: black;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 8px;
+}
+
+form label{
+    font-size: 14px;
+}
+
+form button {
+    background: red;
+    text-align: center;
+    padding: 10px 26px;
+}
+
+@media screen and (max-width: 800px) {
+    .formContainer{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .mainForm{
+        margin-top: 12%;
+    }
+}
