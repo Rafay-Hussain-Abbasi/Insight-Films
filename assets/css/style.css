@@ -122,8 +122,18 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--eerie-black);
+}
+
+img {
+  max-width: 100%;
 }
 
 body.active {
@@ -148,17 +158,20 @@ body.active {
 
 .h1,
 .h2,
-.h3,
-.about-heading,
-.our-subsidiaries {
+.h3 {
   color: var(--white);
   line-height: 1.2;
 }
 
-.h1,
-.about-heading,
-.our-subsidiaries {
-  font-size: 36px;
+.h1 {
+  font-size: clamp(28px, 6vw, 40px);
+}
+
+.about-heading h1 {
+  color: var(--white);
+  line-height: 1.2;
+  font-size: var(--fs-2);
+  margin: 0;
 }
 
 .h2 {
@@ -635,23 +648,29 @@ body.active {
 }
 */
 
-.hero-subtitle,
-.sub-heading {
+.hero-subtitle {
   color: var(--citrine);
   font-size: var(--fs-4);
   font-weight: var(--fw-700);
   margin-bottom: 10px;
 }
 
+.sub-heading h5 {
+  color: var(--citrine);
+  font-size: var(--fs-11);
+  font-weight: var(--fw-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
 .hero-title,
-.about-heading,
-.our-subsidiaries {
-  margin-bottom: 30px;
+.about-heading {
+  margin-bottom: 20px;
 }
 
 .hero-title>strong,
-.about-heading h1 strong,
-.our-subsidiaries h1 strong {
+.about-heading h1 strong {
   color: var(--citrine);
 }
 
@@ -674,46 +693,53 @@ body.active {
 \*-----------------------------------*/
 
 .about-us {
-  height: 100%;
-  padding: 6%;
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 5%;
+  flex-direction: column;
+  gap: 36px;
+  padding: 48px 6%;
+  margin-top: 0;
 }
 
 .text-area {
-  width: 54%;
+  width: 100%;
 }
 
 .image-area {
-  height: 100%;
-  border: 2px solid #ef3e38;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 2px solid var(--citrine);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .image-area img {
-  padding: 20px;
+  padding: 0;
   height: 100%;
-  width: 100%
+  width: 100%;
+  object-fit: cover;
 }
 
 /* About Us Media Query */
 
-@media screen and (min-width: 300px) and (max-width: 656px) {
+@media screen and (min-width: 700px) {
+
+  .about-us {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 70px 6%;
+  }
 
   .text-area {
-    width: 90%;
+    width: 54%;
   }
-}
-
-@media screen and (min-width: 657px) and (max-width: 1000px) {
 
   .image-area {
     width: 40%;
-    display: block;
-  }
-
-  .text-area {
-    width: 47%;
+    max-width: 420px;
+    aspect-ratio: 3 / 4;
+    flex-shrink: 0;
   }
 
 }
@@ -760,7 +786,9 @@ body.active {
 }
 
 .upcoming .movies-list>li {
+  width: 100%;
   min-width: 100%;
+  flex-shrink: 0;
   scroll-snap-align: start;
 }
 
@@ -958,15 +986,28 @@ body.active {
   padding-top: 30px;
 }
 
+.Yt-container {
+  padding-inline: 20px;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
 .video-container {
-  width: 99%;
-  height: 100%;
-  align-content: space-evenly;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-top: 30px;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  display: block;
+  background: var(--gunmetal-1);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px hsla(0, 0%, 0%, 0.4);
 }
 
 .YTvideo {
@@ -980,65 +1021,22 @@ body.active {
 }
 
 /*-----------------------------------*\
- * Youtube Meida Query
+ * DVC / video grid media query
 \*-----------------------------------*/
 
-@media screen and (min-width: 300px) and (max-width: 450) {
+@media screen and (min-width: 640px) {
 
   .video-container {
-    height: 100vh;
-    flex-direction: column;
-  }
-
-  .yt-button {
-    padding-top: 20px;
-  }
-
-  .yt-button-desk {
-    display: none;
+    grid-template-columns: repeat(2, 1fr);
   }
 
 }
 
-@media screen and (min-width: 451px) and (max-width: 900px) {
+@media screen and (min-width: 1100px) {
+
   .video-container {
-    height: 150vh;
-    flex-direction: column;
-  }
-
-  .YTvideo {
-    width: 70vw;
-    height: 52vh;
-  }
-
-  .yt-button-desk {
-    display: none;
-  }
-
-}
-
-@media screen and (min-width: 901px) {
-  .yt-button {
-    display: none;
-  }
-
-  .yt-button-desk {
-    transform: translate(84%, 20px);
-    width: 50%;
-  }
-
-}
-
-@media screen and (min-width: 1200px) {
-
-  .video-1,
-  .video-2,
-  .video-3 {
-    width: 30%;
-  }
-
-  .yt-button-desk {
-    transform: translate(92%, 20px);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
   }
 
 }
@@ -1314,7 +1312,7 @@ body.active {
 
   .storyline,
   .about-desc {
-    font-size: var(--fs-2);
+    font-size: var(--fs-6);
   }
 
 }
@@ -1448,6 +1446,7 @@ body.active {
    */
 
   .upcoming .movies-list>li {
+    width: calc(50% - 15px);
     min-width: calc(50% - 15px);
   }
 
@@ -1788,6 +1787,7 @@ body.active {
   }
 
   .upcoming .movies-list>li {
+    width: calc(33.33% - 20px);
     min-width: calc(33.33% - 20px);
   }
 
@@ -1954,6 +1954,7 @@ body.active {
    */
 
   .upcoming .movies-list>li {
+    width: calc(25% - 22.5px);
     min-width: calc(25% - 22.5px);
   }
 
@@ -2064,60 +2065,29 @@ padding-bottom: 6%;
 
 }
 
-@media (min-width: 300px) and (max-width: 800px){
+@media (max-width: 800px) {
 
-  .about-us{
-    flex-direction: row !important;
-  }
-
-}
-
-@media (min-width: 300px) and (max-width: 800px){
-  
-  .about-us{
-    margin-top: 20%;
-  }
-  
   .new-hero {
     height: 100%;
     width: 100%;
   }
-  
-  .image-holder {
-position: relative;
-top: 6vh;
-  }
 
-  #myvideo{
-    width: 300px;
+  .image-holder {
+    position: relative;
+    top: 6vh;
   }
 
   .image-holder a{
     display: none;
   }
 
+  .copyright{
+    font-size: 10px;
+  }
 
-
-.video-container{
-  flex-direction: row;
-  height: 100%;
-}
-
-.yt-button-desk{
-  display: none;
-}
-
-.about-us{
-  flex-direction: column;
-}
-
-.copyright{
-  font-size: 10px;
-}
-
-.foot-logo{
-  width: 20%;
-}
+  .foot-logo{
+    width: 20%;
+  }
 
 }
 
@@ -2144,20 +2114,24 @@ top: 6vh;
 /* Hero Section */
 
 .swiper{
-  top: 16vh;
-  height: 110vh;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 68px;
+  aspect-ratio: 1920 / 911;
 }
 
-.swiper-container {
-  width: 100vw;
+.swiper-container,
+.swiper-wrapper,
+.swiper-slide {
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-slide {
-  background-color: #fcfcfc;
+  background-color: var(--eerie-black);
   background-size: cover;
   background-position: center;
-  width: 100%;
-  height: 100%;
   justify-content: center;
   align-items: center;
   color: #fcfcfc;
@@ -2166,14 +2140,14 @@ top: 6vh;
 
 .swiper-slide img{
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .swiper-slide > .swiper-slide-cover {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   background: transparent no-repeat 50% 50% /contain;
 }
 
@@ -2234,95 +2208,49 @@ top: 6vh;
 }
 
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 600px) {
   .swiper {
-    top: 14vh;
-    height: 102vh;
-}
-}
-
-@media screen and (max-width: 800px) {
-  .swiper{
-    height: 74vh;
+    margin-top: 84px;
   }
 }
 
-@media screen and (max-width: 480px) {
-  
+@media screen and (min-width: 992px) {
   .swiper {
-    top: 10vh;
-    height: 41vh;
-}
-
-}
-
-@media screen and (min-width: 1499px) {
-  .swiper {
-    top: 14vh;
-}
-}
-
-@media screen and (max-width: 500px) and (max-height: 700px) {
-  .swiper{
-    top: 58px;
+    margin-top: 96px;
+    max-height: 640px;
   }
 }
 
-@media screen and (min-width: 500px) and (max-width: 800px) and (min-height: 560px) and (max-height: 850px) {
+@media screen and (min-width: 1500px) {
   .swiper {
-    top: 6vh;
-    height: 22vh;
-}
-}
-
-@media screen and (min-width: 500px) and (max-width: 800px) and (min-height: 560px) and (max-height: 1000px) {
-  .swiper {
-    top: 7vh;
-    height: 26vh;
-}
-}
-
-@media screen and (min-height: 1000px) and (max-height: 1400px) and (max-width: 1100px) {
-  .swiper{
-    top: 6vh;
-    height: 38vh;
-  }
-
-  .about-us {
-    height: 100%;
+    max-height: 720px;
   }
 }
 
-.our-subsidiaries h1{
-  color: white;
-margin-bottom: 20px;
+.subsidiaries {
+  padding-block: 60px;
+}
+
+.subsidiaries .section-title {
+  margin-bottom: 40px;
 }
 
 .sub-logos{
-  width: 80%;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-}
-.our-subsidiaries img{
-  width: 10%;
-  height: 10%;
+  justify-content: center;
+  gap: 140px;
 }
 
-@media screen and (max-width: 650px) {
-  
-  .image-area{
-    display: none;
-  }
-  
-  .sub-logos{
-    width: 100%;
-  }
+.sub-logos img{
+  width: clamp(46px, 16vw, 72px);
+  height: auto;
+  object-fit: contain;
+  transition: transform var(--transition-1);
 }
 
-@media screen and (min-width: 1000px) {
-  .about-us {
-    height: 100vh;
-  }
-
+.sub-logos img:hover {
+  transform: translateY(-4px);
 }
